@@ -1,7 +1,21 @@
 window.onload=function(){
 	 
     var ctx=document.querySelector("#canvas").getContext("2d");
-    
+
+    var image=new Image();
+      image.src="images/beijing.jpg";
+
+         image.onload=function(){
+                  ctx.drawImage(image,0,0);
+         }
+    var birdimage=new Image();//也可直接在body加上img 效果一样
+      birdimage.src="images/bird.png";
+
+         birdimage.onload=function(){
+                  ctx.drawImage(image,140,264);
+         }
+
+
     var bird={
     	x:140,
     	y:264,
@@ -49,14 +63,20 @@ window.onload=function(){
   }
 
     
-
-    var draw=function(){
+    var imgx=0;
+    var draw=function(){6
     	ctx.clearRect(0,0,320,584);
+
+       imgx--;
+       if(imgx==-320){
+        imgx=0;
+       }
+       ctx.drawImage(image,imgx,0);
         //画小鸟
     	bird.y+=2;
-        ctx.fillRect(bird.x,bird.y,bird.w,bird.h);
+         ctx.drawImage(birdimage,bird.x,bird.y)
         //画管道
-             
+          ctx.fillStyle="rgba("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+1+")";
         	for(var i=0;i<guandao.length;i++){
         		var vs;//页面完整
         		var z=guandao[i];
