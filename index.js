@@ -1,7 +1,13 @@
 window.onload=function(){
 	 
     var ctx=document.querySelector("#canvas").getContext("2d");
-
+    var image=new Image();
+      image.src="images/beijing.jpg";
+      
+         image.onload=function(){
+                  ctx.drawImage(image,0,0);
+         }
+  var demo=function(){
     var image=new Image();
       image.src="images/beijing.jpg";
 
@@ -49,6 +55,7 @@ window.onload=function(){
 ]
 
      //检测举行之间的碰撞
+     
     var recvsrec =  function(rect0,rect1){
     if (rect0.x >= rect1.x && rect0.x >= rect1.x + rect1.w) {
       return false;
@@ -64,7 +71,8 @@ window.onload=function(){
 
     
     var imgx=0;
-    var draw=function(){6
+    var draw=function(){
+
     	ctx.clearRect(0,0,320,584);
 
        imgx--;
@@ -89,6 +97,7 @@ window.onload=function(){
                 if(z.top.x<(bird.x+bird.w)&&z.top.x>(bird.x - z.top.w)){
                 if(recvsrec(bird,z.top)||recvsrec(bird,z.bottom)){
                 	vs=true;
+                  document.querySelector('.cxstart').style.display='block'
                 }
             }
               
@@ -125,6 +134,16 @@ window.onload=function(){
     }
       requestAnimationFrame(draw);
 
-   
+  }
+  
+  var start=document.querySelector('.start');
+  start.onclick=function(){
+    demo();
+    this.style.display='none';
+  }
+   document.querySelector('.cxstart').onclick=function(){
+    demo();
+    this.style.display='none';
+   }
 
 }
