@@ -100,7 +100,7 @@ window.onload=function(){
         		var z=guandao[i];
         		z.top.x-=3;
         		z.bottom.x-=3;
-        	      ctx.drawImage(guandaoupimage,z.top.x,z.top.y,z.top.w,z.top.h);
+        	    ctx.drawImage(guandaoupimage,z.top.x,z.top.y,z.top.w,z.top.h);
                 ctx.drawImage(guandaodownimage,z.bottom.x,z.bottom.y,z.bottom.w,z.bottom.h);
 
                 // 只在鸟过柱子区域的时候才判断碰撞 0~80
@@ -138,10 +138,13 @@ window.onload=function(){
        
     }
 
-
-    canvas.onclick=function(){
-    	bird.y-=40;
+    function fei(){
+      bird.y-=40;
     }
+    canvas.onclick=function(){
+    	fei()
+    }
+     touch.on(canvas,'tap',fei)
       requestAnimationFrame(draw);
 
   }
@@ -151,9 +154,17 @@ window.onload=function(){
     demo();
     this.style.display='none';
   }
-   document.querySelector('.cxstart').onclick=function(){
+  var unstart= document.querySelector('.cxstart');
+  unstart.onclick=function(){
     demo();
     this.style.display='none';
    }
 
+
+touch.on(start,'tap',demo,function(){
+    this.style.display='none';
+  })
+ touch.on(unstart,'tap',demo,function(){
+    this.style.display='none';
+  })
 }
