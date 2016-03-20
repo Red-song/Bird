@@ -38,16 +38,13 @@ body,figure{
 	border:3px solid blue;
 	color:blue;
 }
-
-
-
-.image-show-grid{
+/*.image-show-grid{
 	position: relative;
 	width: 3300px;
 	height:678px;
 	display: block;
 }
-.image-show-grid::after{
+ .image-show-grid::after{
 	content: '';
 	display: block;
 	position: absolute;
@@ -158,4 +155,4 @@ body,figure{
 		-webkit-transform: translate3d(-3300px, 0, 0);
 		transform: translate3d(-3300px, 0, 0)
 	}
-}
+} */

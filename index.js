@@ -15,13 +15,23 @@ window.onload=function(){
                   ctx.drawImage(image,0,0);
          }
     var birdimage=new Image();//也可直接在body加上img 效果一样
-      birdimage.src="images/bird.png";
+      birdimage.src="images/bird0_0.png";
 
          birdimage.onload=function(){
                   ctx.drawImage(image,140,264);
          }
+     var guandaoupimage=new Image();//也可直接在body加上img 效果一样
+      guandaoupimage.src="images/pipe_down.png";
 
+        guandaoupimage.onload=function(){
+                  ctx.drawImage(image,50,0);
+         }
+ var guandaodownimage=new Image();//也可直接在body加上img 效果一样
+      guandaodownimage.src="images/pipe_up.png";
 
+        guandaodownimage.onload=function(){
+                  ctx.drawImage(image,50,350);
+         }
     var bird={
     	x:140,
     	y:264,
@@ -81,17 +91,17 @@ window.onload=function(){
        }
        ctx.drawImage(image,imgx,0);
         //画小鸟
-    	bird.y+=2;
+    	  bird.y+=2;
          ctx.drawImage(birdimage,bird.x,bird.y)
         //画管道
-          ctx.fillStyle="rgba("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+1+")";
+         // ctx.fillStyle='black';
         	for(var i=0;i<guandao.length;i++){
         		var vs;//页面完整
         		var z=guandao[i];
         		z.top.x-=3;
         		z.bottom.x-=3;
-        	    ctx.fillRect(z.top.x,z.top.y,z.top.w,z.top.h);
-                ctx.fillRect(z.bottom.x,z.bottom.y,z.bottom.w,z.bottom.h);
+        	      ctx.drawImage(guandaoupimage,z.top.x,z.top.y,z.top.w,z.top.h);
+                ctx.drawImage(guandaodownimage,z.bottom.x,z.bottom.y,z.bottom.w,z.bottom.h);
 
                 // 只在鸟过柱子区域的时候才判断碰撞 0~80
                 if(z.top.x<(bird.x+bird.w)&&z.top.x>(bird.x - z.top.w)){
