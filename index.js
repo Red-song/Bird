@@ -1,5 +1,6 @@
 window.onload=function(){
-	 
+	 var start=document.querySelector('.start');
+   var unstart= document.querySelector('.cxstart');
     var ctx=document.querySelector("#canvas").getContext("2d");
     var image=new Image();
       image.src="images/beijing.jpg";
@@ -7,7 +8,9 @@ window.onload=function(){
          image.onload=function(){
                   ctx.drawImage(image,0,0);
          }
-  var demo=function(){
+  var demo=function(e){
+    start.style.display="none";
+    unstart.style.display="none";
     var image=new Image();
       image.src="images/beijing.jpg";
 
@@ -137,34 +140,32 @@ window.onload=function(){
 
        
     }
+    
 
     function fei(){
       bird.y-=40;
     }
-    canvas.onclick=function(){
-    	fei()
-    }
-     touch.on(canvas,'tap',fei)
+      touch.on(canvas,'touchstart',fei)
+     /* canvas.onclick=function(){
+        fei();
+      }*/
       requestAnimationFrame(draw);
 
   }
   
-  var start=document.querySelector('.start');
-  start.onclick=function(){
+  /*start.onclick=function(){
     demo();
     this.style.display='none';
   }
-  var unstart= document.querySelector('.cxstart');
+  
   unstart.onclick=function(){
     demo();
     this.style.display='none';
-   }
+   }*/
 
 
-touch.on(start,'tap',demo,function(){
-    this.style.display='none';
-  })
- touch.on(unstart,'tap',demo,function(){
-    this.style.display='none';
-  })
+  touch.on(start,'tap',demo)
+  touch.on(unstart,'tap',demo)
+
+
 }
